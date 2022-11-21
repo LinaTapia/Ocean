@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "//linatapia.github.io/Ocean/static/css/main.eb7367b2.css",
+    "main.js": "//linatapia.github.io/Ocean/static/js/main.bb279d92.js",
+    "static/js/787.0f4e50f9.chunk.js": "//linatapia.github.io/Ocean/static/js/787.0f4e50f9.chunk.js",
+    "static/media/bootstrap-icons.woff?": "//linatapia.github.io/Ocean/static/media/bootstrap-icons.6959d0d983ee318f8880.woff",
+    "static/media/bootstrap-icons.woff2?": "//linatapia.github.io/Ocean/static/media/bootstrap-icons.b2e5aab643c6f0fd2da6.woff2",
+    "static/media/logo.svg": "//linatapia.github.io/Ocean/static/media/logo.b3c1f10655794333a3a6c6a750cf3719.svg",
+    "index.html": "//linatapia.github.io/Ocean/index.html",
+    "main.eb7367b2.css.map": "//linatapia.github.io/Ocean/static/css/main.eb7367b2.css.map",
+    "main.bb279d92.js.map": "//linatapia.github.io/Ocean/static/js/main.bb279d92.js.map",
+    "787.0f4e50f9.chunk.js.map": "//linatapia.github.io/Ocean/static/js/787.0f4e50f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eb7367b2.css",
+    "static/js/main.bb279d92.js"
+  ]
+}
