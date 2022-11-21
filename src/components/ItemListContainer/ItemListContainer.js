@@ -17,7 +17,7 @@ const ItemListContainer = (props) => {
                         <Card.Text>
                             {props.precio}
                         </Card.Text>
-                        <Button variant="primary">Seleccionar Opciones</Button>
+                        <Button variant="primary">Seleccionar Opción</Button>
                     </Card.Body>
                 </Card>
             </Col>
