@@ -1,0 +1,15 @@
+.navbar-nav .nav-link{
+    color: white;
+}
+
+.nav-link span.nav-item__badge {
+    font-weight: 700;
+    font-size: 13px;
+    color: #000000;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: white;
+}
