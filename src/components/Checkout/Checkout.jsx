@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 import FormCart from './FormCart'
 import DetailCart from "./DetailCart";
 import EmptyCart from "./EmptyCart";
+import { getCurrentDate } from "../../helpers/getCurrentDate";
 
 const Checkout = () => {
   const initialStateData = {
@@ -17,6 +18,7 @@ const Checkout = () => {
     email:'',
     emailRepeat: ''
   }
+
 
   const [formData, setFormData] = useState(initialStateData)
   const [isId, setId] = useState('')
@@ -34,7 +36,8 @@ const Checkout = () => {
       const precio = prod.precio * prod.cantidad;
       return {id, nombre, precio}   
     })
-
+    order.estado = "generada"
+    order.fecha = getCurrentDate()
     order.total = totalPrice()
     
     const db = getFirestore()
