@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom';
-import './public/css/style.css';
+import { Link, NavLink } from 'react-router-dom';
+import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import logoOcean from './public/img/logo.svg';
 import CartWidget from './CartWidget.jsx'
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import './public/css/style.css';
 
 
 const NavBar = () => {
@@ -24,15 +24,12 @@ const NavBar = () => {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
                 <Nav className="align-items-center">
-                    <Link to="./"><Nav.Link href="#a">Inicio</Nav.Link></Link>
+                    <NavLink to="./" className="nav-link">Inicio</NavLink>
                     <NavDropdown title="Tienda" id="basic-nav-dropdown">
-                      <Link to="/category/resin-plugs"><NavDropdown.Item href="#action/3.1">Resin plugs</NavDropdown.Item></Link>
-                      <Link to="/category/spiral-plugs"><NavDropdown.Item href="#action/3.2">Spiral Plugs</NavDropdown.Item></Link>
-                      <Link to="/category/wood-plugs"><NavDropdown.Item href="#action/3.3">Wood Plugs</NavDropdown.Item></Link>
+                      <Link to="/category/resin-plugs" className="dropdown-item">Resin plugs</Link>
+                      <Link to="/category/spiral-plugs" className="dropdown-item">Spiral plugs</Link>
+                      <Link to="/category/wood-plugs" className="dropdown-item">Wood plugs</Link>
                     </NavDropdown>
-                    <Nav.Link href="#">Nosotros</Nav.Link>
-                    <Nav.Link href="#">Contacto</Nav.Link>
-                    <Nav.Link href="#"><i className="bi bi-person-circle"></i></Nav.Link>
                     <CartWidget/>
                 </Nav>
               </Navbar.Collapse>

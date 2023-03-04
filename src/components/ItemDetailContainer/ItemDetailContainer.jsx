@@ -1,101 +1,33 @@
-import React, { useEffect, useState } from 'react'
-import { Container, Row, Spinner } from 'react-bootstrap';
+import { getFirestore, doc, getDoc } from 'firebase/firestore'
+import { useEffect, useState } from 'react'
+import { Container} from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
-import ItemCount from '../ItemCount/itemCount'
-import Item from '../ItemListContainer/Item';
-import ItemDetail from './ItemDetail';
+import ItemDetail from './ItemDetail'
+import Loading from '../Loading/Loading'
 
-const ProductList = [
-    {
-        id:1,
-        nombre: "Tapón Humo Negro - Rojo",
-        precio: "1.500 - 7.500",
-        imagen: "p1.jpg",
-        categoria: "resin plugs",
-        stock: 5
-    },
-    {
-        id:2,
-        nombre: "Tapón Humo Azul",
-        precio: "1.500 - 7.500",
-        imagen: "p2.jpg",
-        categoria: "resin-plugs",
-        stock: 2
-    },
-    {
-        id:3,
-        nombre: "Tapón Turquesa Traslúcido",
-        precio: "1.500 - 7.500",
-        imagen: "p3.jpg",
-        categoria: "resin-plugs",
-        stock: 8
-    },
-    {
-        id:4,
-        nombre: "Tapón Negro Traslúcido",
-        precio: "1.500 - 7.500",
-        imagen: "p4.jpg",
-        categoria: "wood-plugs",
-        stock: 3
-    },
-    {
-        id:5,
-        nombre: "Tapón Rosado",
-        precio: "1.500 - 8.500",
-        imagen: "p5.jpg",
-        categoria: "wood-plugs",
-        stock: 1
-    },
-    {
-        id:6,
-        nombre: "Tapón Océano",
-        precio: "1.500 - 8.500",
-        imagen: "p6.jpg",
-        categoria: "spiral-plugs",
-        stock: 6
-    },
-];
 
 const ItemDetailContainer = () => {
-const [products, setProducts] = useState([])
-const [loading, setLoading] = useState(true)
-const ruta = useParams();
+    const [product, setProduct] = useState({})
+    const [loading, setLoading] = useState(true)
+    const ruta = useParams()
 
-useEffect( () => {
-    if(ruta.id){
-        getProducts().then( response => {
-            setProducts(response.filter(producto => producto.id == ruta.id));
-        })
+    useEffect( () => {
+        const db = getFirestore()
+        const query = doc(db, 'productos', ruta.id)
+        getDoc(query)
+        .then( resp => setProduct( {id: resp.id, ...resp.data() } ))
         .catch(error => console.log(error))
         .finally(() => setLoading(false))
-    }else{
-        getProducts().then( response => {
-            setProducts(response);
-        })
-        .catch(error => console.log(error))
-        .finally(() => setLoading(false))
-    }
-}, [ruta.id]);
-
-const getProducts = () => {
-    return new Promise((resolve) => {
-        setTimeout(()=>{
-            resolve(ProductList);
-        }, 2000);
-    })
-}
-
+    }, [ruta.id]) 
+ 
   return (
-    <section>
+    <section className="mt-5">
         <Container>
             {loading ?      
-             <Row className='mt-5'> 
-                <Spinner animation="border" role="status" className="mx-auto">
-                    <span className="visually-hidden">Cargando...</span>
-                </Spinner>
-            </Row>
+            <Loading/>
             :
-            products.map( p => <ItemDetail key={p.id} {...p} /> )}
+            <ItemDetail producto={product} />
+            }
         </Container>
     </section>
   )
