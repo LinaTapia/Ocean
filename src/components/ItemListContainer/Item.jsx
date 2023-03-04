@@ -17,7 +17,7 @@ const Item = memo(
                       ${precio.toLocaleString("de")}
                   </Card.Text>
                   <Link to={`/item/${id}`}>
-                    <Button variant="primary">Seleccionar Opciones</Button>
+                    <Button variant="primary">Comprar</Button>
                   </Link>
               </Card.Body>
           </Card>
